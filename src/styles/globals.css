@@ -1,0 +1,199 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap");
+
+/* Font variables */
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+/* Base */
+html,
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* smooth color/background transitions for theme changes */
+  transition: background-color 260ms cubic-bezier(0.16, 0.8, 0.29, 1),
+    color 260ms cubic-bezier(0.16, 0.8, 0.29, 1);
+}
+
+/* provide a scoped transition helper to avoid persistent transition on load */
+.theme-transition * {
+  transition: color 260ms cubic-bezier(0.16, 0.8, 0.29, 1),
+    background-color 260ms cubic-bezier(0.16, 0.8, 0.29, 1),
+    border-color 260ms cubic-bezier(0.16, 0.8, 0.29, 1),
+    box-shadow 260ms cubic-bezier(0.16, 0.8, 0.29, 1) !important;
+}
+
+/* Headings use elegant serif */
+.heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Smooth entrance + subtle floating animation for profile */
+@keyframes floatY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animasi fadeIn dan popIn untuk form */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 0.8, 0.29, 1) both;
+}
+.animate-fadeIn {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 0.8, 0.29, 1) both;
+}
+.animate-popIn {
+  animation: popIn 0.7s cubic-bezier(0.16, 0.8, 0.29, 1) both;
+}
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* Utility classes used in components */
+.profile-img {
+  animation: popIn 600ms cubic-bezier(0.16, 0.8, 0.29, 1) both,
+    floatY 6s ease-in-out 800ms infinite;
+  will-change: transform;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  border-radius: 9999px; /* fallback if not set by Tailwind */
+  overflow: hidden;
+}
+.profile-img:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.16);
+}
+
+/* Subtle heading accent for hero */
+.hero-subtitle {
+  color: rgba(30, 41, 59, 0.75);
+  font-weight: 500;
+}
+
+/* Navbar underline animation */
+.nav-underline {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1 60%, #a78bfa 100%);
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-active .nav-underline,
+a:hover .nav-underline {
+  width: 100%;
+}
+
+/* keep existing tailwind utilities working */
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.dark\:bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+.rounded-2xl {
+  border-radius: 1rem;
+}
+.border {
+  border-width: 1px;
+}
+.border-gray-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+.dark\:border-gray-800 {
+  --tw-border-opacity: 1;
+  border-color: rgb(31 41 55 / var(--tw-border-opacity));
+}
+.shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-shadow);
+}
+.hover\:shadow-2xl:hover {
+  --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--tw-shadow);
+}
+.transform {
+  transform: translateZ(0);
+}
+.hover\:-translate-y-2:hover {
+  --tw-translate-y: -0.5rem;
+  transform: translateY(var(--tw-translate-y));
+}
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: scale(var(--tw-scale-x), var(--tw-scale-y));
+}
+.transition-all {
+  transition-property: all;
+}
+.duration-300 {
+  transition-duration: 300ms;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.group {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 0.8, 0.29, 1) both;
+}

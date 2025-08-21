@@ -16,7 +16,8 @@ export default function Home() {
           </p>
 
           <form
-            action="https://formsubmit.co/2206018@itg.ac.id"
+            action="https://formsubmit.co/el/hopumi
+"
             method="POST"
             className="flex flex-col gap-5"
           >
